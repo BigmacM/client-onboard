@@ -1,6 +1,6 @@
 ---
 // Client Intake Form - Comprehensive Web Development Onboarding
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyHJ9p615eEIyzfDAHcKSqlHYZg714Iu-kM2CFz1Ci7_k665QUZkLJox5RjhKMZN46E/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxf9F_QAPBI3IWJxsxEJ2rpLoNBe6UiEp93UX6At8HAhegxWOkm3fjVyzgrzHvwY97W/exec";
 const WHATSAPP_NUMBER = "16479094565";
 ---
 
@@ -20,6 +20,22 @@ const WHATSAPP_NUMBER = "16479094565";
       <div class="mb-8 text-center">
         <h1 class="text-3xl font-bold text-white sm:text-4xl">Client Onboarding</h1>
         <p class="mt-2 text-slate-400">Help us understand your business to build the perfect website</p>
+      </div>
+
+      <!-- TEST DATA BUTTON - Remove before production -->
+      <div class="mb-6">
+        <button
+          type="button"
+          id="fillTestDataBtn"
+          class="w-full rounded-xl border-2 border-dashed border-yellow-500/50 bg-yellow-500/10 px-4 py-3 text-yellow-400 font-medium transition-all hover:bg-yellow-500/20 hover:border-yellow-500"
+        >
+          <span class="flex items-center justify-center gap-2">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+            Fill Form with Test Data
+          </span>
+        </button>
       </div>
 
       <!-- Progress Indicator -->
@@ -1017,6 +1033,104 @@ const WHATSAPP_NUMBER = "16479094565";
       } else {
         menuUploadSection.classList.add('hidden');
       }
+    });
+
+    // TEST DATA BUTTON - Fill form with sample data
+    const fillTestDataBtn = document.getElementById('fillTestDataBtn');
+    fillTestDataBtn.addEventListener('click', () => {
+      // Contact Information
+      document.getElementById('contactName').value = 'John Smith';
+      document.getElementById('contactRole').value = 'Owner';
+      document.getElementById('contactEmail').value = 'john@mapleleafbistro.ca';
+      document.getElementById('contactPhone').value = '+1 (647) 555-1234';
+      document.getElementById('preferredContact').value = 'email';
+
+      // Business Information (NAP)
+      document.getElementById('businessName').value = 'Maple Leaf Bistro';
+      document.getElementById('businessType').value = 'Restaurant & Bar';
+      document.getElementById('yearEstablished').value = '2019';
+      document.getElementById('businessAddress').value = '456 Queen Street West';
+      document.getElementById('city').value = 'Toronto';
+      document.getElementById('province').value = 'ON';
+      document.getElementById('postalCode').value = 'M5V 2B3';
+      document.getElementById('businessPhone').value = '+1 (416) 555-9876';
+      document.getElementById('businessEmail').value = 'hello@mapleleafbistro.ca';
+      document.getElementById('businessHours').value = 'Mon-Thu: 11am - 10pm\nFri-Sat: 11am - 11pm\nSun: 10am - 9pm (Brunch from 10am)';
+      document.getElementById('serviceAreas').value = 'Downtown Toronto, Entertainment District, King West';
+
+      // About Business
+      document.getElementById('aboutBusiness').value = 'Maple Leaf Bistro is a modern Canadian restaurant celebrating local, seasonal ingredients. We partner with Ontario farmers and producers to create dishes that showcase the best of Canadian cuisine with a contemporary twist. Our warm, welcoming atmosphere makes us perfect for date nights, family gatherings, and business lunches.';
+      document.getElementById('uniqueValue').value = 'Farm-to-table dining with 90% of ingredients sourced within 100km. Award-winning chef with Michelin experience. Private dining room available. Voted "Best New Restaurant 2020" by Toronto Life.';
+      document.getElementById('servicesOffered').value = '- Lunch & Dinner Service\n- Weekend Brunch\n- Private Event Catering\n- Private Dining Room Rental\n- Takeout & Delivery\n- Gift Cards\n- Cooking Classes (Monthly)';
+      document.getElementById('targetAudience').value = 'Food enthusiasts 28-55, couples looking for date night spots, business professionals for lunch meetings, families celebrating special occasions';
+      document.getElementById('competitors').value = 'Canoe Restaurant - canoerestaurant.com\nActinolite - actinoliterestaurant.com\nRichmond Station - richmondstation.ca';
+
+      // Online Presence
+      document.getElementById('existingWebsite').value = 'https://mapleleafbistro-old.wixsite.com';
+      document.querySelector('input[name="hasDomain"][value="yes"]').checked = true;
+      document.getElementById('domainName').value = 'mapleleafbistro.ca';
+      document.querySelector('input[name="hasGMB"][value="yes-claimed"]').checked = true;
+      document.getElementById('socialLinks').value = 'Instagram: @mapleleafbistro (12.5k followers)\nFacebook: facebook.com/mapleleafbistro\nTikTok: @mapleleafbistro';
+      document.getElementById('reviewProfiles').value = 'Google: 4.7 stars (340 reviews)\nYelp: 4.5 stars (89 reviews)\nTripAdvisor: 4.5 stars (156 reviews)';
+
+      // Branding
+      document.querySelector('input[name="hasLogo"][value="yes-vector"]').checked = true;
+      document.getElementById('brandColors').value = '#2D5016 (Forest Green), #D4A574 (Warm Tan), #1a1a1a (Black), #FFFFF (Cream)';
+      document.getElementById('brandFonts').value = 'Playfair Display for headings, Lato for body text';
+      document.querySelector('input[name="hasPhotos"][value="yes"]').checked = true;
+
+      // Website Requirements
+      document.getElementById('websiteType').value = 'business';
+
+      // Check pages
+      ['home', 'about', 'services', 'gallery', 'contact', 'booking'].forEach(page => {
+        const checkbox = document.querySelector(`input[name="pages"][value="${page}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+
+      // Check features
+      ['contact-form', 'booking', 'social-feed', 'reviews', 'maps', 'analytics', 'seo'].forEach(feature => {
+        const checkbox = document.querySelector(`input[name="features"][value="${feature}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+
+      document.getElementById('websiteInspiration').value = 'https://www.canoerestaurant.com - Love the elegant layout\nhttps://www.alorestaurant.com - Great use of food photography\nhttps://www.richmondstation.ca - Like their menu presentation';
+      document.getElementById('websiteGoals').value = 'Primary: Drive online reservations through OpenTable integration\nSecondary: Showcase our food with beautiful photography\nTertiary: Build email list for special events and promotions';
+
+      // Content
+      document.querySelector('input[name="hasContent"][value="partial"]').checked = true;
+      document.getElementById('tagline').value = 'Farm to Table, Heart to Soul';
+      document.getElementById('callToAction').value = 'Reserve Your Table';
+      document.getElementById('keywords').value = 'farm to table toronto, best restaurants queen west, canadian cuisine toronto, private dining toronto, brunch toronto';
+      document.getElementById('toneOfVoice').value = 'friendly';
+
+      // Project Details
+      document.getElementById('budget').value = '2500-5000';
+      document.getElementById('timeline').value = '1-month';
+
+      // Check additional services
+      ['copywriting', 'seo', 'photography'].forEach(service => {
+        const checkbox = document.querySelector(`input[name="additionalServices"][value="${service}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+
+      document.getElementById('additionalNotes').value = 'We have a new seasonal menu launching in 6 weeks and would love the website ready by then. Also interested in discussing ongoing SEO services. Our current Wix site is very outdated and not mobile-friendly.';
+      document.getElementById('howDidYouHear').value = 'referral';
+
+      // Trigger progress update
+      updateProgress();
+
+      // Scroll to top and show confirmation
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      fillTestDataBtn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Test Data Filled!</span>';
+      fillTestDataBtn.classList.remove('border-yellow-500/50', 'bg-yellow-500/10', 'text-yellow-400', 'hover:bg-yellow-500/20', 'hover:border-yellow-500');
+      fillTestDataBtn.classList.add('border-green-500/50', 'bg-green-500/10', 'text-green-400');
+
+      setTimeout(() => {
+        fillTestDataBtn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>Fill Form with Test Data</span>';
+        fillTestDataBtn.classList.add('border-yellow-500/50', 'bg-yellow-500/10', 'text-yellow-400', 'hover:bg-yellow-500/20', 'hover:border-yellow-500');
+        fillTestDataBtn.classList.remove('border-green-500/50', 'bg-green-500/10', 'text-green-400');
+      }, 2000);
     });
 
     // Progress tracking
