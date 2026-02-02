@@ -496,10 +496,107 @@ const WHATSAPP_NUMBER = "16479094565";
                 <option value="business">Business Website (5-10 pages)</option>
                 <option value="ecommerce">E-Commerce Store</option>
                 <option value="booking">Booking/Appointment Site</option>
+                <option value="menu-qr">Menu with QR Code Link</option>
                 <option value="portfolio">Portfolio/Gallery</option>
                 <option value="blog">Blog/Content Site</option>
                 <option value="custom">Custom/Other</option>
               </select>
+            </div>
+
+            <!-- Menu Upload Section (shown when menu-qr is selected) -->
+            <div id="menuUploadSection" class="hidden space-y-4 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4">
+              <div class="flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/20">
+                  <svg class="h-5 w-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-amber-200">Menu Upload</h3>
+                  <p class="text-xs text-amber-300/70">Upload photos of each menu page - our AI will extract and digitize your menu</p>
+                </div>
+              </div>
+
+              <div>
+                <label class="mb-2 block text-sm font-medium text-slate-200">
+                  Menu Type
+                </label>
+                <select id="menuType" name="menuType"
+                  class="w-full rounded-xl border border-slate-600 bg-slate-700/50 px-4 py-3 text-white transition-all focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+                  <option value="restaurant">Restaurant Menu</option>
+                  <option value="cafe">Cafe/Coffee Shop</option>
+                  <option value="bar">Bar/Drinks Menu</option>
+                  <option value="takeout">Takeout/Delivery</option>
+                  <option value="catering">Catering Menu</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="mb-2 block text-sm font-medium text-slate-200">
+                  Upload Menu Pages <span class="text-rose-400">*</span>
+                </label>
+                <p class="text-xs text-slate-400 mb-3">Upload clear photos of each page of your menu. Label each page (e.g., "Appetizers", "Main Course", "Drinks")</p>
+
+                <div id="menuDropZone" class="relative cursor-pointer rounded-xl border-2 border-dashed border-amber-500/50 bg-slate-700/30 p-6 text-center transition-all hover:border-amber-400 hover:bg-slate-700/50">
+                  <input type="file" id="menuInput" name="menuImages" accept="image/*" multiple class="absolute inset-0 cursor-pointer opacity-0" />
+                  <div class="flex flex-col items-center">
+                    <div class="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500/20">
+                      <svg class="h-7 w-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                    </div>
+                    <p class="text-sm font-medium text-amber-200">Tap to upload menu photos</p>
+                    <p class="mt-1 text-xs text-slate-400">Take clear, well-lit photos of each menu page</p>
+                  </div>
+                </div>
+
+                <!-- Menu Page Previews with Labels -->
+                <div id="menuPreviews" class="mt-4 space-y-3"></div>
+              </div>
+
+              <div>
+                <label for="menuNotes" class="mb-2 block text-sm font-medium text-slate-200">
+                  Menu Notes / Special Instructions
+                </label>
+                <textarea id="menuNotes" name="menuNotes" rows="2"
+                  placeholder="Any items to exclude, pricing changes, seasonal items, allergen info to highlight..."
+                  class="w-full resize-none rounded-xl border border-slate-600 bg-slate-700/50 px-4 py-3 text-white placeholder-slate-400 transition-all focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"></textarea>
+              </div>
+
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label class="mb-2 block text-sm font-medium text-slate-200">
+                    Include prices on digital menu?
+                  </label>
+                  <div class="flex gap-4">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="showPrices" value="yes" checked class="text-indigo-500 focus:ring-indigo-500" />
+                      <span class="text-slate-200">Yes</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="showPrices" value="no" class="text-indigo-500 focus:ring-indigo-500" />
+                      <span class="text-slate-200">No</span>
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <label class="mb-2 block text-sm font-medium text-slate-200">
+                    Need QR code printed materials?
+                  </label>
+                  <div class="flex gap-4">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="needQRPrint" value="yes" class="text-indigo-500 focus:ring-indigo-500" />
+                      <span class="text-slate-200">Yes</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="needQRPrint" value="no" checked class="text-indigo-500 focus:ring-indigo-500" />
+                      <span class="text-slate-200">No</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div>
@@ -884,6 +981,7 @@ const WHATSAPP_NUMBER = "16479094565";
     // State
     let selectedFiles = [];
     let logoFile = null;
+    let menuFiles = []; // Array of {file, label} objects
     let formData = {};
 
     // DOM Elements
@@ -906,6 +1004,20 @@ const WHATSAPP_NUMBER = "16479094565";
     const openWhatsAppBtn = document.getElementById('openWhatsAppBtn');
     const progressBar = document.getElementById('progressBar');
     const progressText = document.getElementById('progressText');
+    const websiteTypeSelect = document.getElementById('websiteType');
+    const menuUploadSection = document.getElementById('menuUploadSection');
+    const menuInput = document.getElementById('menuInput');
+    const menuDropZone = document.getElementById('menuDropZone');
+    const menuPreviews = document.getElementById('menuPreviews');
+
+    // Show/hide menu upload section based on website type
+    websiteTypeSelect.addEventListener('change', () => {
+      if (websiteTypeSelect.value === 'menu-qr') {
+        menuUploadSection.classList.remove('hidden');
+      } else {
+        menuUploadSection.classList.add('hidden');
+      }
+    });
 
     // Progress tracking
     function updateProgress() {
@@ -999,6 +1111,78 @@ const WHATSAPP_NUMBER = "16479094565";
       logoPreview.classList.add('hidden');
     });
 
+    // Menu handling
+    function handleMenuFiles(files) {
+      const newFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
+      newFiles.forEach((file, i) => {
+        const pageNum = menuFiles.length + i + 1;
+        menuFiles.push({ file, label: `Menu Page ${pageNum}` });
+      });
+      renderMenuPreviews();
+    }
+
+    function renderMenuPreviews() {
+      menuPreviews.innerHTML = '';
+      menuFiles.forEach((item, index) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const div = document.createElement('div');
+          div.className = 'flex items-center gap-3 p-3 bg-slate-700/50 rounded-xl';
+          div.innerHTML = `
+            <img src="${e.target.result}" class="h-16 w-16 rounded-lg object-cover flex-shrink-0" alt="Menu page ${index + 1}">
+            <div class="flex-1 min-w-0">
+              <input type="text" value="${item.label}" data-menu-index="${index}"
+                class="menu-label w-full rounded-lg border border-slate-600 bg-slate-800/50 px-3 py-2 text-sm text-white placeholder-slate-400 focus:border-amber-500 focus:outline-none"
+                placeholder="Label this page (e.g., Appetizers, Mains, Drinks)">
+              <p class="mt-1 text-xs text-slate-400 truncate">${item.file.name}</p>
+            </div>
+            <button type="button" data-menu-remove="${index}" class="flex-shrink-0 text-rose-400 hover:text-rose-300 p-1">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          `;
+          menuPreviews.appendChild(div);
+        };
+        reader.readAsDataURL(item.file);
+      });
+    }
+
+    menuInput.addEventListener('change', (e) => handleMenuFiles(e.target.files));
+
+    menuDropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      menuDropZone.classList.add('border-amber-400', 'bg-slate-700/50');
+    });
+
+    menuDropZone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      menuDropZone.classList.remove('border-amber-400', 'bg-slate-700/50');
+    });
+
+    menuDropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      menuDropZone.classList.remove('border-amber-400', 'bg-slate-700/50');
+      handleMenuFiles(e.dataTransfer.files);
+    });
+
+    // Update menu labels and handle removal
+    menuPreviews.addEventListener('input', (e) => {
+      if (e.target.classList.contains('menu-label')) {
+        const index = parseInt(e.target.dataset.menuIndex);
+        menuFiles[index].label = e.target.value;
+      }
+    });
+
+    menuPreviews.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-menu-remove]');
+      if (btn) {
+        const index = parseInt(btn.dataset.menuRemove);
+        menuFiles.splice(index, 1);
+        renderMenuPreviews();
+      }
+    });
+
     // Collect all form data
     function collectFormData() {
       const data = {};
@@ -1041,7 +1225,7 @@ const WHATSAPP_NUMBER = "16479094565";
         { title: 'About Your Business', fields: ['aboutBusiness', 'uniqueValue', 'servicesOffered', 'targetAudience', 'competitors'] },
         { title: 'Online Presence', fields: ['existingWebsite', 'hasDomain', 'domainName', 'hasGMB', 'socialLinks', 'reviewProfiles'] },
         { title: 'Branding', fields: ['hasLogo', 'brandColors', 'brandFonts', 'hasPhotos'] },
-        { title: 'Website Requirements', fields: ['websiteType', 'pages', 'features', 'websiteInspiration', 'websiteGoals'] },
+        { title: 'Website Requirements', fields: ['websiteType', 'menuType', 'showPrices', 'needQRPrint', 'menuNotes', 'pages', 'features', 'websiteInspiration', 'websiteGoals'] },
         { title: 'Content', fields: ['hasContent', 'tagline', 'callToAction', 'keywords', 'toneOfVoice'] },
         { title: 'Project Details', fields: ['budget', 'timeline', 'additionalServices', 'additionalNotes', 'howDidYouHear'] }
       ];
@@ -1054,7 +1238,7 @@ const WHATSAPP_NUMBER = "16479094565";
         servicesOffered: 'Services', targetAudience: 'Target Audience', competitors: 'Competitors', existingWebsite: 'Current Website',
         hasDomain: 'Has Domain', domainName: 'Domain', hasGMB: 'Google Business Profile', socialLinks: 'Social Media', reviewProfiles: 'Review Profiles',
         hasLogo: 'Has Logo', brandColors: 'Colors', brandFonts: 'Fonts', hasPhotos: 'Has Photos',
-        websiteType: 'Website Type', pages: 'Pages', features: 'Features', websiteInspiration: 'Inspiration', websiteGoals: 'Goals',
+        websiteType: 'Website Type', menuType: 'Menu Type', showPrices: 'Show Prices', needQRPrint: 'QR Print Materials', menuNotes: 'Menu Notes', pages: 'Pages', features: 'Features', websiteInspiration: 'Inspiration', websiteGoals: 'Goals',
         hasContent: 'Has Content', tagline: 'Tagline', callToAction: 'CTA', keywords: 'Keywords', toneOfVoice: 'Tone',
         budget: 'Budget', timeline: 'Timeline', additionalServices: 'Additional Services', additionalNotes: 'Notes', howDidYouHear: 'Referral Source'
       };
@@ -1084,6 +1268,15 @@ const WHATSAPP_NUMBER = "16479094565";
         html += `<div class="rounded-xl bg-slate-700/50 p-4">
           <p class="text-xs font-medium uppercase tracking-wider text-indigo-400 mb-3">Logo</p>
           <p class="text-white text-sm">${logoFile.name}</p>
+        </div>`;
+      }
+
+      if (menuFiles.length > 0) {
+        html += `<div class="rounded-xl bg-amber-500/10 border border-amber-500/30 p-4">
+          <p class="text-xs font-medium uppercase tracking-wider text-amber-400 mb-3">Menu Pages (${menuFiles.length})</p>
+          <div class="space-y-1">
+            ${menuFiles.map((m, i) => `<p class="text-white text-sm">${i + 1}. ${m.label}</p>`).join('')}
+          </div>
         </div>`;
       }
 
@@ -1131,6 +1324,21 @@ const WHATSAPP_NUMBER = "16479094565";
           });
         }
 
+        // Convert menu images to base64 with labels
+        const menuPromises = menuFiles.map(item => {
+          return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve({
+              name: item.file.name,
+              type: item.file.type,
+              label: item.label,
+              data: e.target.result
+            });
+            reader.readAsDataURL(item.file);
+          });
+        });
+        const menuImages = await Promise.all(menuPromises);
+
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
@@ -1139,6 +1347,7 @@ const WHATSAPP_NUMBER = "16479094565";
             ...formData,
             logo: logoData,
             images: images,
+            menuImages: menuImages,
             timestamp: new Date().toISOString()
           })
         });
@@ -1157,6 +1366,11 @@ const WHATSAPP_NUMBER = "16479094565";
     });
 
     openWhatsAppBtn.addEventListener('click', () => {
+      let menuInfo = '';
+      if (formData.websiteType === 'menu-qr' && menuFiles.length > 0) {
+        menuInfo = `\n*Menu Pages:* ${menuFiles.length} uploaded\n*Menu Labels:* ${menuFiles.map(m => m.label).join(', ')}\n`;
+      }
+
       const message = encodeURIComponent(
         `*New Client Intake*\n\n` +
         `*Business:* ${formData.businessName || 'N/A'}\n` +
@@ -1165,6 +1379,7 @@ const WHATSAPP_NUMBER = "16479094565";
         `*Email:* ${formData.contactEmail || 'N/A'}\n` +
         `*Type:* ${formData.businessType || 'N/A'}\n` +
         `*Website Type:* ${formData.websiteType || 'N/A'}\n` +
+        menuInfo +
         `*Budget:* ${formData.budget || 'N/A'}\n` +
         `*Timeline:* ${formData.timeline || 'N/A'}\n\n` +
         `*Images:* ${selectedFiles.length} uploaded`
